@@ -6,24 +6,15 @@ namespace ShiftCipher
 {
     public class ShiftCipher
     {
-        public Dictionary<byte, string> value { get; set; }
         private int key;
 
         public ShiftCipher()
         {
-            value = new Dictionary<byte, string>();
-
             //Random rnd = new Random();
 
             //key = rnd.Next();
 
             key = 17;
-
-            for (byte i = 0; i < 26; i++)
-            {
-
-                value.Add(i, Encoding.ASCII.GetString(new byte[] { (byte)(i + 65) }));
-            }
         }
 
         public string Encrypt(string input)
