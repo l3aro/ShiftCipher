@@ -10,12 +10,11 @@ namespace ShiftCipher
     {
         static void Main(string[] args)
         {
-            ShiftCipher sc = new ShiftCipher();
+            ShiftCipher cp = new ShiftCipher();
 
-            for (byte i = 0; i < 26; i++)
-            {
-                Console.WriteLine("{0} : {1}", i, sc.value[i]);
-            }
+            string encrypt = cp.Encrypt("attack");
+
+            string decrypt = cp.Decrypt(encrypt);
 
             Console.ReadKey();
         }
