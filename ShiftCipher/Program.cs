@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShiftCipher
 {
@@ -12,9 +8,19 @@ namespace ShiftCipher
         {
             ShiftCipher cp = new ShiftCipher();
 
-            string encrypt = cp.Encrypt("attack");
+            Console.Write("Nhap chuoi can ma hoa: ");
+
+            string data;
+
+            data = Console.ReadLine();
+
+            string encrypt = cp.Encrypt(data);
+
+            Console.WriteLine("Chuoi da ma hoa: {0}", encrypt);
 
             string decrypt = cp.Decrypt(encrypt);
+
+            Console.WriteLine("Chuoi da giai ma: {0}", decrypt);
 
             Console.ReadKey();
         }
