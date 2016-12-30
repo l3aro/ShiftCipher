@@ -23,6 +23,11 @@ namespace ShiftCipher
 
             for (int index = 0; index < toAlphabetNumber.Length; index++)
             {
+                if (toAlphabetNumber[index] == 32)
+                {
+                    continue;
+                }
+
                 byte token = (byte)(toAlphabetNumber[index] - 65); // minus by 65 to back to Alphabet code context
 
                 token = (byte)((token + key) % 26);
@@ -45,6 +50,11 @@ namespace ShiftCipher
 
             for (int index = 0; index < toAlphabetNumber.Length; index++)
             {
+                if (toAlphabetNumber[index] == 32)
+                {
+                    continue;
+                }
+
                 byte token = (byte)(toAlphabetNumber[index] - 65); // minus by 65 to back to Alphabet code context
 
                 token = (byte)((token + 26 - key) % 26);
