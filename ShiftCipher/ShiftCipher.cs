@@ -15,11 +15,38 @@ namespace ShiftCipher
             key = rnd.Next(1, 26);
         }
 
-        public string Encrypt(string input)
+        // Remove characters not in Z26 alphabet
+        public string RemoveNonZ26(string raw)
         {
-            input = input.ToUpper();
+            raw = raw.ToUpper();
+            do
+            {
+                int i = 0;
+                for (; i < raw.Length; i++)
+                {
+                    int ch = (int)raw[i];
+                    if (ch < 65 || ch > 90)
+                    {
+                        raw = raw.Remove(i, 1);
+                        break;
+                    }
+                }
+                if (i == raw.Length)
+                {
+                    break;
+                }
+            }
+            while (true);
 
-            byte[] toAlphabetNumber = Encoding.ASCII.GetBytes(input);
+            return raw;
+
+        }
+
+        public string Encrypt(string plainText)
+        {
+            plainText = RemoveNonZ26(plainText);
+
+            byte[] toAlphabetNumber = Encoding.ASCII.GetBytes(plainText);
 
             for (int index = 0; index < toAlphabetNumber.Length; index++)
             {
@@ -42,11 +69,11 @@ namespace ShiftCipher
             return result;
         }
 
-        public string Decrypt(string input)
+        public string Decrypt(string encrypted)
         {
-            input = input.ToUpper();
+            encrypted = RemoveNonZ26(encrypted);
 
-            byte[] toAlphabetNumber = Encoding.ASCII.GetBytes(input);
+            byte[] toAlphabetNumber = Encoding.ASCII.GetBytes(encrypted);
 
             for (int index = 0; index < toAlphabetNumber.Length; index++)
             {
