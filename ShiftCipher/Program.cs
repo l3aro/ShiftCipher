@@ -6,7 +6,7 @@ namespace ShiftCipher
     {
         static void Main(string[] args)
         {
-            ShiftCipher cp = new ShiftCipher();
+            ShiftCipher ShiftCipher = new ShiftCipher();
 
             Console.Write("Nhap chuoi can ma hoa: ");
 
@@ -14,11 +14,13 @@ namespace ShiftCipher
 
             data = Console.ReadLine();
 
-            string encrypt = cp.Encrypt(data);
+            int key = ShiftCipher.GetKey();
+
+            string encrypt = ShiftCipher.Encrypt(data, key);
 
             Console.WriteLine("Chuoi da ma hoa: {0}", encrypt);
 
-            string decrypt = cp.Decrypt(encrypt);
+            string decrypt = ShiftCipher.Decrypt(encrypt, key);
 
             Console.WriteLine("Chuoi da giai ma: {0}", decrypt);
 

@@ -42,7 +42,7 @@ namespace ShiftCipher
 
         }
 
-        public string Encrypt(string plainText)
+        public string Encrypt(string plainText, int key)
         {
             plainText = RemoveNonZ26(plainText);
 
@@ -69,7 +69,7 @@ namespace ShiftCipher
             return result;
         }
 
-        public string Decrypt(string encrypted)
+        public string Decrypt(string encrypted, int key)
         {
             encrypted = RemoveNonZ26(encrypted);
 
@@ -94,6 +94,11 @@ namespace ShiftCipher
             string result = Encoding.ASCII.GetString(toAlphabetNumber);
 
             return result;
+        }
+
+        public int GetKey()
+        {
+            return key;
         }
     }
 }
